@@ -15,6 +15,7 @@ class TestAnimal(unittest.TestCase):
         self.assertEqual({'name': 'Carole Baskin', 'Phone':'07411287053'}, self.animal_1.owner_details)
         self.assertEqual({}, self.animal_1.treatment_notes)
         self.assertEqual(None, self.animal_1.vet)
+        self.assertEqual(None, self.animal_1.id)
 
     def test_assign_vet(self):
         self.animal_1.assign_vet(self.vet_1)
