@@ -31,7 +31,14 @@ def select(vet):
         vet = Vet(vet_dict['first_name'], vet_dict['last_name'], vet_dict['id'])
         return vet
 
+def animals(vet):
+    pass
+
 #UPDATE
+def update(vet):
+    sql = "UPDATE vets SET (first_name, last_name) = (%s, %s) WHERE id = %s"
+    values = [vet.first_name, vet.last_name, vet.id]
+    run_sql(sql, values)
 
 #REMOVE
 def delete_all():
