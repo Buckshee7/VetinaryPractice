@@ -1,5 +1,8 @@
+import datetime
 from db.run_sql import run_sql
 from models.vet import Vet
+from models.animal import Animal
+import repositories.animal_repository as animal_repository
 
 #CREATE
 def save(vet):
@@ -31,8 +34,19 @@ def select(vet_id):
         vet = Vet(vet_dict['first_name'], vet_dict['last_name'], vet_dict['id'])
         return vet
 
-def animals(vet):
-    pass
+def animals(vet_id):
+    animals = []
+    sql = "SELECT * from animals WHERE vet_id = %s"
+    values = [vet_id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        dob = datetime.datetime.strptime(row['dob'], '%Y-%m-%d').date()
+        vet = select(row['vet_id']) if row['vet_id'] else None
+        animal = Animal(row['name'], dob, row['animal_type'], row['owner_details'], vet, row['id'])
+        animals.append(animal)
+    
+    return animals
 
 #UPDATE
 def update(vet):
