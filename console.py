@@ -20,7 +20,7 @@ animal_2 = Animal("Roger", datetime.date(2018,7,2), "Rabbit", {'name':'Elmer Fud
 animal_repository.save(animal_1)
 animal_repository.save(animal_2)
 
-# vet_repository.delete(vet_1)
+# vet_repository.delete(vet_1.id)
 
 all_vets = vet_repository.select_all()
 
@@ -31,6 +31,10 @@ vet_1.first_name = "Will"
 vet_repository.update(vet_1)
 returned_vet_2 = vet_repository.select(vet_1.id)
 
+animal_2.name = "Peter"
+animal_repository.update(animal_2)
+
 all_animals = animal_repository.select_all()
+returned_animal = animal_repository.select(animal_1.id)
 
 pdb.set_trace()

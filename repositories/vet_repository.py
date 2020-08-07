@@ -45,7 +45,7 @@ def delete_all():
     sql = "DELETE FROM vets"
     run_sql(sql)
 
-def delete(vet):
+def delete(vet_id):
     sql = "DELETE FROM vets WHERE id = %s"
-    values = [vet.id]
+    values = [vet_id]
     run_sql(sql, values)
