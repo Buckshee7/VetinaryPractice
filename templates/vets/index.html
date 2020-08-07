@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section>
+        <h2>Vetinary Practitioners</h2>
+            {% for vet in vets %}
+                <div class = "vet">
+                    <p>Dr {{vet.first_name}} {{vet.last_name}}</p>
+                </div>
+            {% endfor %}
+    </section>
+{% endblock %}
