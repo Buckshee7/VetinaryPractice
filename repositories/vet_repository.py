@@ -21,9 +21,9 @@ def select_all():
     
     return vets
 
-def select(vet):
+def select(vet_id):
     sql = "SELECT * FROM vets WHERE id = %s"
-    values = [vet.id]
+    values = [vet_id]
     result = run_sql(sql, values)
 
     if result:
