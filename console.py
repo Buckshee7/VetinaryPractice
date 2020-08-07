@@ -2,6 +2,8 @@ import pdb
 from models.vet import Vet
 import repositories.vet_repository as vet_repository
 
+vet_repository.delete_all()
+
 vet_1 = Vet("John", "Smith")
 vet_2 = Vet("Vetty", "McVetface")
 

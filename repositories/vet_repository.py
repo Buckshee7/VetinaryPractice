@@ -24,3 +24,6 @@ def select_all():
 #UPDATE
 
 #REMOVE
+def delete_all():
+    sql = "DELETE FROM vets"
+    run_sql(sql)
