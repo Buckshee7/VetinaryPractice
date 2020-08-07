@@ -6,3 +6,6 @@ class Animal():
         self.owner_details = owner_details
         self.treatment_notes = treatment_notes
         self.vet = vet
+
+    def assign_vet(self, Vet):
+        self.vet = Vet
