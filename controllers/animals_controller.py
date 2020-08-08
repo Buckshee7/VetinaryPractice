@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, redirect
 from models.animal import Animal
 import repositories.animal_repository as animal_repository
 import repositories.vet_repository as vet_repository
@@ -17,7 +17,8 @@ def show(id):
 
 @animals_blueprint.route('/animals/<id>/delete')
 def delete(id):
-    pass
+    animal_repository.delete(id)
+    return redirect('/animals')
 
 @animals_blueprint.route('/animals/new')
 def get_info_for_new():
