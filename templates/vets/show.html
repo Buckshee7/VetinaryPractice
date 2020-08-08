@@ -1,20 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <img src="../{{ vet.img_url }}" alt="Profile picture of Dr {{ vet.last_name }}">
-    <h2>Dr {{ vet.first_name }} {{vet.last_name }}</h2>
-    <a href="/vets/{{ vet.id }}/edit">Edit</a>
-    <h3>Assigned Aimals</h3>
-    {% if animals %}
-        {% for animal in animals %}
-        <div class='animals'>
-            <img src="../{{ animal.img_url }}" alt="Profile picture of {{ animal.name }}">
-            <p>{{ animal.name }}</p>
-            <p>{{ animal.animal_type  }}</p>
-            <p>{{ animal.calculate_age() }} year(s) old</p>
-        </div>
-        {% endfor %}
-    {% else %}
-        <p>-- NO ASSIGNED ANIMALS --</p>
-    {% endif %}
+    <div class="primary_info">
+        <img  src="../{{ vet.img_url }}" alt="Profile picture of Dr {{ vet.last_name }}">
+        <h2>Dr {{ vet.first_name }} {{vet.last_name }}</h2>
+        <a href="/vets/{{ vet.id }}/edit">Edit</a>
+    </div>
+    <div>
+        <h3>Assigned Aimals</h3>
+        {% if animals %}
+            {% for animal in animals %}
+            <div class="secondary_info">
+                <a href="/animals/{{ animal.id }}">
+                    <img src="../{{ animal.img_url }}" alt="Profile picture of {{ animal.name }}">
+                </a>
+                <p>{{ animal.name }}</p>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>-- NO ASSIGNED ANIMALS --</p>
+        {% endif %}
+    </div>
 {% endblock %}

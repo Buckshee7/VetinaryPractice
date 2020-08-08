@@ -7,9 +7,9 @@
                 <a href="/vets/new">Add New Vetinarian</a>
             </div>
             {% for vet in vets %}
-                <div class = "vet">
+                <div class = "primary_info">
                     <img src="{{ vet.img_url }}" alt="Profile picture of Dr {{ vet.last_name }}">
-                    <p>Dr {{vet.first_name}} {{vet.last_name}}</p>
+                    <h3>Dr {{vet.first_name}} {{vet.last_name}}</h3>
                     <a href="/vets/{{ vet.id }}">Details</a>
                     <a href="/vets/{{ vet.id }}/delete">Remove</a>
                 </div>

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div>
+    <div class="primary_info" >
         <img src="../{{ animal.img_url }}" alt="Profile picture of {{ animal.name }}">
         <h2>{{ animal.name }}</h2>
         <p>Animal Type: {{ animal.animal_type }}</p>
@@ -11,10 +11,12 @@
         <p>Name: {{ animal.owner_name }}</p>
         <p>Phone: {{ animal.owner_phone }}</p>
     </div>
-    <div>
+    <div class="secondary_info">
         {% if animal.vet %}
-            <p>Assigned Vetinarian: <a href="/vets/{{ animal.vet.id }}">Dr {{ animal.vet.last_name }}</a></p>
-            <img src="../{{ animal.vet.img_url }}" alt="Profile picture of Dr {{ animal.vet.last_name }}">
+            <p>Assigned Vetinarian: Dr {{ animal.vet.last_name }}</a></p>
+            <a href="/vets/{{ animal.vet.id }}">
+                <img src="../{{ animal.vet.img_url }}" alt="Profile picture of Dr {{ animal.vet.last_name }}">
+            </a>
         {% else %}
             <p>-- NO VET ASSIGNED--</p>
         {% endif %}

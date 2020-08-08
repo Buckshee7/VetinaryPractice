@@ -1,0 +1,11 @@
+.primary_info > img {
+    width: 250px;
+    height: 250px;
+    border-radius: 100%;
+}
+
+.secondary_info > a > img {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+}
