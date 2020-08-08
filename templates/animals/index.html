@@ -8,6 +8,7 @@
             </div>
             {% for animal in animals %}
                 <div class = "animal">
+                    <img src="{{ animal.img_url }}" alt="Profile picture of {{ animal.name }}">
                     <p>{{ animal.name }}</p>
                     <a href="/animals/{{ animal.id }}">Details</a>
                     <a href="/animals/{{ animal.id }}/delete">Remove</a>

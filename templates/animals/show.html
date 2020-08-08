@@ -2,6 +2,7 @@
 
 {% block content %}
     <div>
+        <img src="../{{ animal.img_url }}" alt="Profile picture of {{ animal.name }}">
         <h2>{{ animal.name }}</h2>
         <p>Animal Type: {{ animal.animal_type }}</p>
         <p>D.O.B.: {{ animal.dob }}</p>
@@ -13,6 +14,7 @@
     <div>
         {% if animal.vet %}
             <p>Assigned Vetinarian: <a href="/vets/{{ animal.vet.id }}">Dr {{ animal.vet.last_name }}</a></p>
+            <img src="../{{ animal.vet.img_url }}" alt="Profile picture of Dr {{ animal.vet.last_name }}">
         {% else %}
             <p>-- NO VET ASSIGNED--</p>
         {% endif %}

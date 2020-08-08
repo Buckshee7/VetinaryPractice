@@ -8,6 +8,7 @@
     {% if animals %}
         {% for animal in animals %}
         <div class='animals'>
+            <img src="../{{ animal.img_url }}" alt="Profile picture of {{ animal.name }}">
             <p>{{ animal.name }}</p>
             <p>{{ animal.animal_type  }}</p>
             <p>{{ animal.calculate_age() }} year(s) old</p>

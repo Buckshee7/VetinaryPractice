@@ -26,6 +26,12 @@
         </select>
         <label for="dob">D.O.B.:</label>
         <input type="date" name="dob" value="{{ animal.dob }}">
+        <label for="img_url">Profile Picture:</label>
+        {% if animal.img_url == "static/images/no_img.jpg" %}
+            <input type="text" name="img_url" placeholder="optional">
+        {% else %}
+            <input type="text" name="img_url" value="{{ animal.img_url }}">
+        {% endif %}
     </div>
     <div>
         <h3>Owner Details</h3>
