@@ -49,4 +49,15 @@ def get_info_for_update(id):
 
 @animals_blueprint.route('/animals/<id>', methods=['POST'])
 def update_animal(id):
-    pass
+    name = request.form['name']
+    animal_type = request.form['animal_type']
+    dob_string = request.form['dob']
+    dob = datetime.datetime.strptime(dob_string, '%Y-%m-%d').date()
+    owner_name = request.form['owner_name']
+    owner_phone = request.form['owner_phone']
+    vet_id = None if request.form['vet_id'] == "None" else request.form['vet_id']
+    vet = vet_repository.select(vet_id)
+    treatment_notes = "" #to be implemented later
+    updated_animal = Animal(name, dob, animal_type, owner_name, owner_phone, vet, treatment_notes, id)
+    animal_repository.update(updated_animal)
+    return redirect('/animals')
