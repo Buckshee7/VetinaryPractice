@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <img src="../{{ vet.img_url }}" alt="Profile picture of Dr {{ vet.last_name }}">
     <h2>Dr {{ vet.first_name }} {{vet.last_name }}</h2>
     <a href="/vets/{{ vet.id }}/edit">Edit</a>
     <h3>Assigned Aimals</h3>

@@ -13,7 +13,7 @@ def index():
 def show(id):
     vet = vet_repository.select(id)
     animals = vet_repository.animals(id)
-    return render_template('/vets/show.html', vet=vet, animals=animals, title='Vet Details')
+    return render_template('/vets/show.html', vet=vet, animals=animals, title=f"Dr {vet.last_name}")
 
 @vets_blueprint.route('/vets/<id>/delete')
 def delete(id):
@@ -28,7 +28,8 @@ def get_info_for_new():
 def create_new_vet():
     first_name = request.form['first_name']
     last_name = request.form['last_name']
-    new_vet = Vet(first_name, last_name)
+    img_url = request.form['img_url'] if request.form['img_url'] else "static/images/no_img.jpg"
+    new_vet = Vet(first_name, last_name, img_url)
     vet_repository.save(new_vet)
     return redirect('/vets')
 
@@ -41,6 +42,7 @@ def get_info_for_update(id):
 def update_vet(id):
     first_name = request.form['first_name']
     last_name = request.form['last_name']
-    updated_vet = Vet(first_name, last_name, id)
+    img_url = request.form['img_url'] if request.form['img_url'] else "static/images/no_img.jpg"
+    updated_vet = Vet(first_name, last_name, img_url, id)
     vet_repository.update(updated_vet)
     return redirect('/vets')
