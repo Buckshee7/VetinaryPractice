@@ -14,8 +14,8 @@ vet_2 = Vet("Vetty", "McVetface")
 vet_repository.save(vet_1)
 vet_repository.save(vet_2)
 
-animal_1 = Animal("Tigger", datetime.date(2017,5,1), "Tiger", {'name': 'Carole Baskin', 'Phone':'0700000000'})
-animal_2 = Animal("Roger", datetime.date(2018,7,2), "Rabbit", {'name':'Elmer Fudd', 'Phone':'014100000000'}, vet_1)
+animal_1 = Animal("Tigger", datetime.date(2017,5,1), "Tiger",'Carole Baskin', '0700000000')
+animal_2 = Animal("Roger", datetime.date(2018,7,2), "Rabbit", 'Elmer Fudd', '014100000000', vet_1)
 
 animal_1_age = animal_1.calculate_age()
 
