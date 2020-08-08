@@ -11,6 +11,7 @@ CREATE TABLE vets (
 CREATE TABLE animals (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
+    img_url VARCHAR(255),
     dob VARCHAR(255),
     animal_type VARCHAR(255),
     owner_name VARCHAR(255),

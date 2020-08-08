@@ -1,13 +1,14 @@
 from datetime import date
 
 class Animal():
-    def __init__(self, name, dob, animal_type, owner_name, owner_phone, vet = None, treatment_notes = "", id = None):
+    def __init__(self, name, dob, animal_type, owner_name, owner_phone, img_url = "static/images/no_img.jpg", vet = None, treatment_notes = "", id = None):
         self.name = name
         self.dob = dob
         self.animal_type = animal_type
         self.owner_name = owner_name
         self.owner_phone = owner_phone
         self.treatment_notes = treatment_notes
+        self.img_url = img_url
         self.vet = vet
         self.id = id
 
