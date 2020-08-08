@@ -6,6 +6,8 @@
             {% for vet in vets %}
                 <div class = "vet">
                     <p>Dr {{vet.first_name}} {{vet.last_name}}</p>
+                    <a href="/vets/{{ vet.id }}">Details</a>
+                    <a href="/vets/{{ vet.id }}/delete">Remove</a>
                 </div>
             {% endfor %}
     </section>

@@ -13,6 +13,7 @@ class Animal():
     def assign_vet(self, Vet):
         self.vet = Vet
 
+    #this method could be improved as doesnt incorporate leap years
     def calculate_age(self):
         age_days = date.today() - self.dob
         age_years = age_days.days // 365
