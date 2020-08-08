@@ -34,7 +34,8 @@ def create_new_vet():
 
 @vets_blueprint.route('/vets/<id>/edit')
 def get_info_for_update(id):
-    return render_template('/vets/edit.html', title='Update Vet')
+    vet = vet_repository.select(id)
+    return render_template('/vets/edit.html', vet=vet, title='Update Vet')
 
 @vets_blueprint.route('/vets/<id>', methods=['POST'])
 def update_vet(id):
