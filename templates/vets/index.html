@@ -3,6 +3,9 @@
 {% block content %}
     <section>
         <h2>Vetinary Practitioners</h2>
+            <div>
+                <a href="/vets/new">Add new</a>
+            </div>
             {% for vet in vets %}
                 <div class = "vet">
                     <p>Dr {{vet.first_name}} {{vet.last_name}}</p>

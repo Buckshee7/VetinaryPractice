@@ -4,7 +4,7 @@
     <h2>Dr {{ vet.first_name }} {{vet.last_name }}</h2>
     <h3>Assigned Aimals</h3>
     {% for animal in animals %}
-       <div class='vet-animals'>
+       <div class='animals'>
            <p>{{ animal.name }}</p>
            <p>{{ animal.animal_type  }}</p>
            <p>{{ animal.calculate_age() }} year(s) old</p>
