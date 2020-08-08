@@ -22,7 +22,8 @@ def delete(id):
 
 @animals_blueprint.route('/animals/new')
 def get_info_for_new():
-    pass
+    vets = vet_repository.select_all()
+    return render_template('/animals/new.html', vets=vets, title='New Animal')
 
 @animals_blueprint.route('/animals', methods=['POST'])
 def create_new_animal():
