@@ -39,6 +39,6 @@ animal_repository.update(animal_2)
 all_animals = animal_repository.select_all()
 returned_animal = animal_repository.select(animal_1.id)
 
-# vet_1_animals = vet_repository.animals(vet_1.id)
+vet_1_animals = vet_repository.animals(vet_1.id)
 
 pdb.set_trace()
