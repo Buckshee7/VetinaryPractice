@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>New Animal</h2>
+<form action="/animals" method="post">
+    <h3>Animal Details</h3>
+    <label for="name">Name:</label>
+    <input type="text" name="name" placeholder="Name" required autofocus>
+    <label for="animal_type">Type of Animal:</label>
+    <select name="animal_type">
+        <option value="cat">cat</option>
+        <option value="dog">dog</option>
+        <option value="fish">fish</option>
+        <option value="tiger">audi</option>
+        <option value="rabbit">rabbit</option>
+        <option value="lizard">lizard</option>
+        <option value="hamster">hamster</option>
+        <option value="turtle">turtle</option>
+        <option value="bear">bear</option>
+        <option value="unicorn">unicorn</option>
+        <option value="dragon">dragon</option>
+        <option value="t-rex">t-rex</option>
+        <option value="monkey">monkey</option>
+    </select>
+    <h3>Owner Details</h3>
+    <label for="owner_name">Name:</label>
+    <input type="text" name="owner_name" placeholder="Name" required>
+    <label for="owner_phone">Phone number:</label>
+    <input type="text" name="owner_phone" required>
+    <h3>Vetinarian</h3>
+    <label for="vet_id">Name:</label>
+    <select name="vet_id">
+        <option value="None" selected>None</option>
+        {% for vet in vets %}
+            <option value="{{ vet.id }}">Dr {{ vet.first_name }} {{ vet.last_name }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit"></input>
+  </form>
+{% endblock %}

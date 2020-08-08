@@ -3,14 +3,10 @@
 {% block content %}
 <h2>New Vetinarian</h2>
 <form action="/vets" method="post">
-    <div>
-      <label for="first_name">First Name:</label>
-      <input type="text" name="first_name" placeholder="First Name" required autofocus>
-    </div>
-    <div>
-      <label for="last_name">Duration:</label>
-      <input type="text" name="last_name" placeholder="Last Name" required>
-    </div>
+    <label for="first_name">First Name:</label>
+    <input type="text" name="first_name" placeholder="First Name" required autofocus>
+    <label for="last_name">Last Name:</label>
+    <input type="text" name="last_name" placeholder="Last Name" required>
     <input type="submit"></input>
-  </form>
+</form>
 {% endblock %}
