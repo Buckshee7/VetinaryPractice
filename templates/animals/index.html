@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section>
+        <h2>All Animals</h2>
+            <div>
+                <a href="/animals/new">Add new animal</a>
+            </div>
+            {% for animal in animals %}
+                <div class = "animal">
+                    <p>{{ animal.name }}</p>
+                    <a href="/animals/{{ animal.id }}">Details</a>
+                    <a href="/animals/{{ animal.id }}/delete">Remove</a>
+                </div>
+            {% endfor %}
+    </section>
+{% endblock %}
