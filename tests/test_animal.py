@@ -18,10 +18,6 @@ class TestAnimal(unittest.TestCase):
         self.assertEqual(None, self.animal_1.vet)
         self.assertEqual(None, self.animal_1.id)
 
-    def test_assign_vet(self):
-        self.animal_1.assign_vet(self.vet_1)
-        self.assertEqual(self.vet_1, self.animal_1.vet)
-
     def test_calculate_age_1(self):
         self.assertEqual(1, self.animal_1.calculate_age())
 
