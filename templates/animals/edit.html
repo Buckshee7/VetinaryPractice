@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>New Animal</h2>
-<form action="/animals" method="post">
+<h2>Update Animal</h2>
+<form action="/animals/{{ animal.id }}" method="post">
     <div>
         <h3>Animal Details</h3>
         <label for="name">Name:</label>
-        <input type="text" name="name" placeholder="Name" required autofocus>
+        <input type="text" name="name" value="{{ animal.name }}" required autofocus>
         <label for="animal_type">Type of Animal:</label>
         <select name="animal_type">
-            <option value="" hidden selected>Select Type</option>
+            <option value="{{ animal.animal_type }}" hidden selected>{{ animal.animal_type }}</option>
             <option value="Cat">cat</option>
             <option value="Dog">dog</option>
             <option value="Fish">fish</option>
@@ -25,20 +25,23 @@
             <option value="Monkey">monkey</option>
         </select>
         <label for="dob">D.O.B.:</label>
-        <input type="date" name="dob">
+        <input type="date" name="dob" value="{{ animal.dob }}">
     </div>
     <div>
         <h3>Owner Details</h3>
         <label for="owner_name">Name:</label>
-        <input type="text" name="owner_name" placeholder="Name" required>
+        <input type="text" name="owner_name" value="{{ animal.owner_name }}" required>
         <label for="owner_phone">Phone number:</label>
-        <input type="text" name="owner_phone" placeholder="Phone" required>
+        <input type="text" name="owner_phone" value="{{ animal.owner_phone }}"required>
     </div>
     <div>
         <h3>Vetinarian</h3>
         <label for="vet_id">Name:</label>
         <select name="vet_id">
-            <option value="None" selected>None</option>
+            {% if animal.vet %}
+                <option value="{{ animal.vet.id }}" hidden selected>Dr {{ animal.vet.last_name }}</option>
+            {% endif %}
+            <option value="None">None</option>
             {% for vet in vets %}
                 <option value="{{ vet.id }}">Dr {{ vet.last_name }}</option>
             {% endfor %}

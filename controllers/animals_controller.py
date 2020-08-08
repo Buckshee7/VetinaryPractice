@@ -45,7 +45,7 @@ def create_new_animal():
 def get_info_for_update(id):
     animal = animal_repository.select(id)
     vets = vet_repository.select_all()
-    return render_template('/templates/animals/edit.html', animal=animal, vets=vets)
+    return render_template('/animals/edit.html', animal=animal, vets=vets)
 
 @animals_blueprint.route('/animals/<id>', methods=['POST'])
 def update_animal(id):
