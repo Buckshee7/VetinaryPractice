@@ -1,3 +1,5 @@
+from datetime import date
+
 class Animal():
     def __init__(self, name, dob, animal_type, owner_details, vet = None, id = None):
         self.name = name
@@ -10,3 +12,8 @@ class Animal():
 
     def assign_vet(self, Vet):
         self.vet = Vet
+
+    def calculate_age(self):
+        age_days = date.today() - self.dob
+        age_years = age_days.days // 365
+        return age_years
