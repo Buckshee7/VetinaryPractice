@@ -1,7 +1,8 @@
-from flask import Blueprint, render_template, redirect
+from flask import Blueprint, render_template, redirect, request
 from models.animal import Animal
 import repositories.animal_repository as animal_repository
 import repositories.vet_repository as vet_repository
+import datetime
 
 animals_blueprint = Blueprint("animals", __name__)
 
@@ -27,7 +28,18 @@ def get_info_for_new():
 
 @animals_blueprint.route('/animals', methods=['POST'])
 def create_new_animal():
-    pass
+    name = request.form['name']
+    animal_type = request.form['animal_type']
+    dob_string = request.form['dob']
+    dob = datetime.datetime.strptime(dob_string, '%Y-%m-%d').date()
+    owner_name = request.form['owner_name']
+    owner_phone = request.form['owner_phone']
+    vet_id = None if request.form['vet_id'] == "None" else request.form['vet_id']
+    vet = vet_repository.select(vet_id)
+    new_animal = Animal(name, dob, animal_type, owner_name, owner_phone, vet)
+    animal_repository.save(new_animal)
+    return redirect('/animals')
+    
 
 @animals_blueprint.route('/animals/<id>/edit')
 def get_info_for_update(id):

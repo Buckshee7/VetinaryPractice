@@ -12,7 +12,7 @@
     </div>
     <div>
         {% if animal.vet %}
-            <p>Assigned Vetinarian:<a href="/vets/{{ animal.vet.id }}"></a>{{ animal.vet.name }}</p>
+            <p>Assigned Vetinarian: <a href="/vets/{{ animal.vet.id }}">Dr {{ animal.vet.last_name }}</a></p>
         {% else %}
             <p>-- NO VET ASSIGNED--</p>
         {% endif %}
