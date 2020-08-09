@@ -8,6 +8,7 @@ import repositories.animal_repository as animal_repository
 import repositories.owner_repository as owner_repository
 
 # animal_repository.delete_all()
+owner_repository.delete_all()
 # vet_repository.delete_all()
 
 # vet_1 = Vet("John", "Smith")
@@ -21,6 +22,7 @@ owner_1 = Owner("Cpt.", "Jack", "Harkness", True)
 owner_repository.save(owner_1)
 
 all_owners = owner_repository.select_all()
+returned_owner = owner_repository.select(owner_1.id)
 
 # animal_1 = Animal("Tigger", datetime.date(2017,5,1), "Tiger",'Carole Baskin', '0700000000')
 # animal_2 = Animal("Roger", datetime.date(2018,7,2), "Rabbit", 'Elmer Fudd', '014100000000', vet_1)

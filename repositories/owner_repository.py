@@ -15,13 +15,25 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        registered = True if row['registered'] == "True" else False
-        owner = Owner(row['title'], row['first_name'], row['last_name'], registered, row['id'])
+        owner = Owner(row['title'], row['first_name'], row['last_name'], row['registered'], row['id'])
         owners.append(owner)
     
     return owners
+
+def select(id):
+    sql = "SELECT * FROM owners WHERE id=%s"
+    values = [id]
+    result = run_sql(sql, values)
+
+    if result:
+        owner_dict = result[0]
+        owner = Owner(owner_dict['title'], owner_dict['first_name'], owner_dict['last_name'], owner_dict['registered'], owner_dict['id'])
+        return owner
 
 #UPDATE
 
 
 #DELETE
+def delete_all():
+    sql = "DELETE FROM owners"
+    run_sql(sql)
