@@ -17,11 +17,12 @@ def show(id):
 
 @owners_blueprint.route('/owners/<id>/delete')
 def delete(id):
-    pass
+    owner_repository.delete(id)
+    return redirect('/owners')
 
 @owners_blueprint.route('/owners/new')
 def get_info_for_new():
-    pass
+    return render_template('/owners/new.html', title='New Owner')
 
 @owners_blueprint.route('/owners', methods=['POST'])
 def create_new_owner():

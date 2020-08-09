@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>New Owner</h2>
+<form action="/owners" method="post">
+    <label for="title">Title:</label>
+    <select name="title" required autofocus>
+        <option value="" hidden selected>Select Title</option>
+        <option value="Mr">Mr</option>
+        <option value="Mrs">Mrs</option>
+        <option value="Miss">Fish</option>
+        <option value="Ms">Tiger</option>
+        <option value="Dr">Rabbit</option>
+    </select>
+    <label for="first_name">First Name:</label>
+    <input type="text" name="first_name" placeholder="First Name" required>
+    <label for="last_name">Last Name:</label>
+    <input type="text" name="last_name" placeholder="Last Name" required>
+    <label for="phone">Phone Number:</label>
+    <input type="text" name="phone" placeholder="Phone Number" required>    
+    <label for="registered">Registered</label>
+    <input type="checkbox" name="registered" value="True">
+    <input type="submit"></input>
+</form>
+{% endblock %}
