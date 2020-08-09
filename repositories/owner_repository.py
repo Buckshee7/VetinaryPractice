@@ -1,5 +1,7 @@
 from db.run_sql import run_sql
 from models.owner import Owner
+from models.animal import Animal
+import datetime
 
 #CREATE
 def save(owner):
@@ -30,10 +32,32 @@ def select(id):
         owner = Owner(owner_dict['title'], owner_dict['first_name'], owner_dict['last_name'], owner_dict['registered'], owner_dict['id'])
         return owner
 
-#UPDATE
+def animals(owner):
+    animals = []
+    sql = "SELECT * FROM animals WHERE owner_id=%s"
+    values = [owner.id]
+    results = run_sql(sql, values)
 
+    for row in results:
+        dob = datetime.datetime.strptime(row['dob'], '%Y-%m-%d').date()
+        vet = select(row['vet_id']) if row['vet_id'] else None
+        animal = Animal(row['name'], dob, row['animal_type'], row['owner_name'], row['owner_phone'], vet, row['img_url'], row['treatment_notes'], row['id'])
+        animals.append(animal)
+    
+    return animals
+
+#UPDATE
+def update(owner):
+    sql = "UPDATE owners SET (title, first_name, last_name, registered) = (%s, %s, %s, %s) WHERE id = %s"
+    values = [owner.title, owner.first_name, owner.last_name, owner.registered, owner.id]
+    run_sql(sql, values)
 
 #DELETE
 def delete_all():
     sql = "DELETE FROM owners"
     run_sql(sql)
+
+def delete(id):
+    sql = "DELETE FROM owners WHERE id=%s"
+    values = [id]
+    run_sql(sql, values)
