@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, redirect, request
 import repositories.owner_repository as owner_repository
+import repositories.animal_repository as animal_repository
 from models.owner import Owner
 
 owners_blueprint = Blueprint("owners", __name__)
@@ -17,6 +18,10 @@ def show(id):
 
 @owners_blueprint.route('/owners/<id>/delete')
 def delete(id):
+    owner = owner_repository.select(id)
+    animals = owner_repository.animals(owner)
+    for animal in animals:
+        animal_repository.delete(animal.id)
     owner_repository.delete(id)
     return redirect('/owners')
 

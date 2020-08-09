@@ -7,19 +7,21 @@
         <p>Animal Type: {{ animal.animal_type }}</p>
         <p>D.O.B.: {{ animal.dob }}</p>
         <p>Age: {{ animal.calculate_age() }}</p>
+        <a href="/animals/{{ animal.id }}/edit">Edit</a>
     </div>
     <div>
-        <h3>Owner Details<h3>
+        <h3>Owner Details</h3>
         <p>Name: {{ animal.owner.title}} {{ animal.owner.first_name}} {{ animal.owner.last_name}}</p>
         <p>Phone: {{ animal.owner.phone }}</p>
     </div>
     </div>
     <div class="secondary_info">
-        {% if animal.vet %}
-            <p>Assigned Vetinarian: Dr {{ animal.vet.last_name }}</a></p>
+        <h3>Assigned Vetinarian</h3>
+        {% if animal.vet %} 
             <a href="/vets/{{ animal.vet.id }}">
                 <img src="../{{ animal.vet.img_url }}" alt="Profile picture of Dr {{ animal.vet.last_name }}">
             </a>
+            <p>Dr {{ animal.vet.last_name }}</p>
         {% else %}
             <p>-- NO VET ASSIGNED--</p>
         {% endif %}
@@ -30,5 +32,4 @@
             <p>-- NO NOTES --</p>
         {% endif %}
     </div>
-    <a href="/animals/{{ animal.id }}/edit">Edit</a>
 {% endblock %}

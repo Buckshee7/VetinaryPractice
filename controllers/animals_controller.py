@@ -57,12 +57,12 @@ def update_animal(id):
     animal_type = request.form['animal_type']
     dob_string = request.form['dob']
     dob = datetime.datetime.strptime(dob_string, '%Y-%m-%d').date()
-    owner_name = request.form['owner_name']
-    owner_phone = request.form['owner_phone']
+    owner_id = request.form['owner_id']
+    owner = owner_repository.select(owner_id)
     img_url = request.form['img_url'] if request.form['img_url'] else "static/images/no_img.jpg"
     vet_id = None if request.form['vet_id'] == "None" else request.form['vet_id']
     vet = vet_repository.select(vet_id)
     treatment_notes = "" #to be implemented later
-    updated_animal = Animal(name, dob, animal_type, owner_name, owner_phone, vet, img_url, treatment_notes, id)
+    updated_animal = Animal(name, dob, animal_type, owner, vet, img_url, treatment_notes, id)
     animal_repository.update(updated_animal)
     return redirect('/animals')
