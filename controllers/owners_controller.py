@@ -6,7 +6,8 @@ owners_blueprint = Blueprint("owners", __name__)
 
 @owners_blueprint.route('/owners')
 def index():
-    pass
+    owners = owner_repository.select_all()
+    return render_template('/owners/index.html', owners=owners, title='Owners')
 
 @owners_blueprint.route('/owners/<id>')
 def show(id):

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section>
+        <h2>All Owners</h2>
+            <div>
+                <a href="/owners/new">Add New Owner</a>
+            </div>
+            {% for owner in owners %}
+                <div class = "primary_info">
+                    <h3>{{ owner.title }} {{owner.last_name}}</h3>
+                    <a href="/owners/{{ owner.id }}">Details</a>
+                    <a href="/owners/{{ owner.id }}/delete">Remove</a>
+                </div>
+            {% endfor %}
+    </section>
+{% endblock %}
