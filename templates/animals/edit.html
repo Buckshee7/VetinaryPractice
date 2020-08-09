@@ -1,44 +1,49 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+<div>
 <h2>Update Animal</h2>
-<form action="/animals/{{ animal.id }}" method="post">
-    <div>
-        <h3>Animal Details</h3>
-        <label for="name">Name:</label>
-        <input type="text" name="name" value="{{ animal.name }}" required autofocus>
-        <label for="animal_type">Type of Animal:</label>
-        <select name="animal_type">
-            <option value="{{ animal.animal_type }}" hidden selected>{{ animal.animal_type }}</option>
-            <option value="Cat">cat</option>
-            <option value="Dog">dog</option>
-            <option value="Fish">fish</option>
-            <option value="Tiger">tiger</option>
-            <option value="Rabbit">rabbit</option>
-            <option value="Lizard">lizard</option>
-            <option value="Hamster">hamster</option>
-            <option value="Turtle">turtle</option>
-            <option value="Bear">bear</option>
-            <option value="Unicorn">unicorn</option>
-            <option value="Dragon">dragon</option>
-            <option value="T-rex">t-rex</option>
-            <option value="Monkey">monkey</option>
+<form class="edit" action="/animals/{{ animal.id }}" method="post">
+    <img src="../../{{ animal.img_url }}" alt="Profile picture of {{ animal.name }}">
+    <label for="img_url">Profile Picture URL:</label>
+    {% if animal.img_url == "static/images/no_img.jpg" %}
+        <input type="text" name="img_url" placeholder="optional">
+    {% else %}
+        <input type="text" name="img_url" value="{{ animal.img_url }}">
+    {% endif %}
+    <h3>Animal Details</h3>
+    <label for="name">Name:</label>
+    <input type="text" name="name" value="{{ animal.name }}" required autofocus>
+    <label for="animal_type">Type of Animal:</label>
+    <select name="animal_type" required>
+        <option value="{{ animal.animal_type }}" hidden selected>{{ animal.animal_type }}</option>
+        <option value="Cat">cat</option>
+        <option value="Dog">dog</option>
+        <option value="Fish">fish</option>
+        <option value="Tiger">tiger</option>
+        <option value="Rabbit">rabbit</option>
+        <option value="Lizard">lizard</option>
+        <option value="Hamster">hamster</option>
+        <option value="Turtle">turtle</option>
+        <option value="Bear">bear</option>
+        <option value="Unicorn">unicorn</option>
+        <option value="Dragon">dragon</option>
+        <option value="T-rex">t-rex</option>
+        <option value="Monkey">monkey</option>
+    </select>
+    <label for="dob">D.O.B.:</label>
+    <input type="date" name="dob" value="{{ animal.dob }}" required>
+</div>
+<div>
+        <h3>Owner</h3>
+        <label for="owner_id">Name:</label>
+        <select name="owner_id" required>
+            <option value="{{ animal.owner.id }}" hidden selected>{{ animal.owner.title }} {{ animal.owner.last_name }}</option>
+            {% for owner in owners %}
+                <option value="{{ owner.id }}">{{ owner.title }} {{ owner.last_name }}</option>
+            {% endfor %}
         </select>
-        <label for="dob">D.O.B.:</label>
-        <input type="date" name="dob" value="{{ animal.dob }}">
-        <label for="img_url">Profile Picture:</label>
-        {% if animal.img_url == "static/images/no_img.jpg" %}
-            <input type="text" name="img_url" placeholder="optional">
-        {% else %}
-            <input type="text" name="img_url" value="{{ animal.img_url }}">
-        {% endif %}
-    </div>
-    <div>
-        <h3>Owner Details</h3>
-        <label for="owner_name">Name:</label>
-        <input type="text" name="owner_name" value="{{ animal.owner_name }}" required>
-        <label for="owner_phone">Phone number:</label>
-        <input type="text" name="owner_phone" value="{{ animal.owner_phone }}"required>
     </div>
     <div>
         <h3>Vetinarian</h3>

@@ -8,7 +8,7 @@
         <label for="name">Name:</label>
         <input type="text" name="name" placeholder="Name" required autofocus>
         <label for="animal_type">Type of Animal:</label>
-        <select name="animal_type">
+        <select name="animal_type" required>
             <option value="" hidden selected>Select Type</option>
             <option value="Cat">cat</option>
             <option value="Dog">dog</option>
@@ -25,16 +25,19 @@
             <option value="Monkey">monkey</option>
         </select>
         <label for="dob">D.O.B.:</label>
-        <input type="date" name="dob">
+        <input type="date" name="dob" required>
         <label for="img_url">Profile Picture:</label>
         <input type="text" name="img_url" placeholder="optional">    
     </div>
     <div>
-        <h3>Owner Details</h3>
-        <label for="owner_name">Name:</label>
-        <input type="text" name="owner_name" placeholder="Name" required>
-        <label for="owner_phone">Phone number:</label>
-        <input type="text" name="owner_phone" placeholder="Phone" required>
+        <h3>Owner</h3>
+        <label for="owner_id">Name:</label>
+        <select name="owner_id" required>
+            <option value="" hidden disabled selected>Select Owner</option>
+            {% for owner in owners %}
+                <option value="{{ owner.id }}">{{ owner.title }} {{ owner.last_name }}</option>
+            {% endfor %}
+        </select>
     </div>
     <div>
         <h3>Vetinarian</h3>

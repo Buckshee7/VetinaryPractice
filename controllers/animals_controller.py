@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, redirect, request
 from models.animal import Animal
 import repositories.animal_repository as animal_repository
 import repositories.vet_repository as vet_repository
+import repositories.owner_repository as owner_repository
 import datetime
 
 animals_blueprint = Blueprint("animals", __name__)
@@ -24,7 +25,8 @@ def delete(id):
 @animals_blueprint.route('/animals/new')
 def get_info_for_new():
     vets = vet_repository.select_all()
-    return render_template('/animals/new.html', vets=vets, title='New Animal')
+    owners = owner_repository.select_all()
+    return render_template('/animals/new.html', vets=vets, owners=owners, title='New Animal')
 
 @animals_blueprint.route('/animals', methods=['POST'])
 def create_new_animal():
@@ -32,12 +34,12 @@ def create_new_animal():
     animal_type = request.form['animal_type']
     dob_string = request.form['dob']
     dob = datetime.datetime.strptime(dob_string, '%Y-%m-%d').date()
-    owner_name = request.form['owner_name']
-    owner_phone = request.form['owner_phone']
+    owner_id = request.form['owner_id']
+    owner = owner_repository.select(owner_id)
     img_url = request.form['img_url'] if request.form['img_url'] else "static/images/no_img.jpg"
     vet_id = None if request.form['vet_id'] == "None" else request.form['vet_id']
     vet = vet_repository.select(vet_id)
-    new_animal = Animal(name, dob, animal_type, owner_name, owner_phone, vet, img_url)
+    new_animal = Animal(name, dob, animal_type, owner, vet, img_url)
     animal_repository.save(new_animal)
     return redirect('/animals')
     
@@ -46,7 +48,8 @@ def create_new_animal():
 def get_info_for_update(id):
     animal = animal_repository.select(id)
     vets = vet_repository.select_all()
-    return render_template('/animals/edit.html', animal=animal, vets=vets)
+    owners = owner_repository.select_all()
+    return render_template('/animals/edit.html', animal=animal, vets=vets, owners=owners, title=f"Update {animal.name}")
 
 @animals_blueprint.route('/animals/<id>', methods=['POST'])
 def update_animal(id):
