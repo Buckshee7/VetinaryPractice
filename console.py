@@ -41,19 +41,18 @@ animal_repository.save(animal_2)
 
 all_vets = vet_repository.select_all()
 
-# returned_vet = vet_repository.select(vet_2.id)
-# no_vet_returned = vet_repository.select(vet_1.id)
+returned_vet = vet_repository.select(vet_2.id)
+no_vet_returned = vet_repository.select(vet_1.id)
 
-# vet_1.first_name = "Will"
-# vet_repository.update(vet_1)
-# returned_vet_2 = vet_repository.select(vet_1.id)
-
+vet_1.first_name = "Will"
+vet_repository.update(vet_1)
+returned_vet_2 = vet_repository.select(vet_1.id)
 animal_2.name = "Peter"
 animal_repository.update(animal_2)
 
 all_animals = animal_repository.select_all()
 returned_animal = animal_repository.select(animal_2.id)
 
-# vet_1_animals = vet_repository.animals(vet_1.id)
+vet_1_animals = vet_repository.animals(vet_1.id)
 
 pdb.set_trace()

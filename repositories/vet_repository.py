@@ -3,6 +3,7 @@ from db.run_sql import run_sql
 from models.vet import Vet
 from models.animal import Animal
 import repositories.animal_repository as animal_repository
+import repositories.owner_repository as owner_repository
 
 #CREATE
 def save(vet):
@@ -43,7 +44,8 @@ def animals(vet_id):
     for row in results:
         dob = datetime.datetime.strptime(row['dob'], '%Y-%m-%d').date()
         vet = select(row['vet_id']) if row['vet_id'] else None
-        animal = Animal(row['name'], dob, row['animal_type'], row['owner_name'], row['owner_phone'], vet, row['img_url'], row['treatment_notes'], row['id'])
+        owner = owner_repository.select(row['owner_id'])
+        animal = Animal(row['name'], dob, row['animal_type'], owner, vet, row['img_url'], row['treatment_notes'], row['id'])
         animals.append(animal)
     
     return animals
