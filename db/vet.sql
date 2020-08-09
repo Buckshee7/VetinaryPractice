@@ -14,6 +14,7 @@ CREATE TABLE owners (
     title VARCHAR(255),
     first_name VARCHAR(255),
     last_name VARCHAR(255),
+    phone varchar(255),
     registered BOOLEAN
 );
 

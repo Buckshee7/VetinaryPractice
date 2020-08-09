@@ -17,7 +17,7 @@ vet_2 = Vet("Vetty", "McVetface", "static/images/dr2.jpg")
 vet_repository.save(vet_1)
 vet_repository.save(vet_2)
 
-owner_1 = Owner("Cpt.", "Jack", "Harkness", True)
+owner_1 = Owner("Cpt.", "Jack", "Harkness", "0741000000", True)
 
 owner_repository.save(owner_1)
 

@@ -11,7 +11,9 @@ def index():
 
 @owners_blueprint.route('/owners/<id>')
 def show(id):
-    pass
+    owner = owner_repository.select(id)
+    animals = owner_repository.animals(owner)
+    return render_template('/owners/show.html', owner=owner, animals=animals, title=f"{owner.title} {owner.last_name}")
 
 @owners_blueprint.route('/owners/<id>/delete')
 def delete(id):

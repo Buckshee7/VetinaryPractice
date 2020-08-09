@@ -5,8 +5,8 @@ import datetime
 
 #CREATE
 def save(owner):
-    sql = "INSERT INTO owners (title, first_name, last_name, registered) VALUES (%s, %s, %s, %s) returning id"
-    values = [owner.title, owner.first_name, owner.last_name, owner.registered]
+    sql = "INSERT INTO owners (title, first_name, last_name, phone, registered) VALUES (%s, %s, %s, %s, %s) returning id"
+    values = [owner.title, owner.first_name, owner.last_name, owner.phone, owner.registered]
     result = run_sql(sql, values)[0]
     owner.id = result['id']
 
@@ -17,7 +17,7 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        owner = Owner(row['title'], row['first_name'], row['last_name'], row['registered'], row['id'])
+        owner = Owner(row['title'], row['first_name'], row['last_name'], row['phone'], row['registered'], row['id'])
         owners.append(owner)
     
     return owners
@@ -29,7 +29,7 @@ def select(id):
 
     if result:
         owner_dict = result[0]
-        owner = Owner(owner_dict['title'], owner_dict['first_name'], owner_dict['last_name'], owner_dict['registered'], owner_dict['id'])
+        owner = Owner(owner_dict['title'], owner_dict['first_name'], owner_dict['last_name'], owner_dict['phone'], owner_dict['registered'], owner_dict['id'])
         return owner
 
 def animals(owner):
@@ -49,8 +49,8 @@ def animals(owner):
 
 #UPDATE
 def update(owner):
-    sql = "UPDATE owners SET (title, first_name, last_name, registered) = (%s, %s, %s, %s) WHERE id = %s"
-    values = [owner.title, owner.first_name, owner.last_name, owner.registered, owner.id]
+    sql = "UPDATE owners SET (title, first_name, last_name, phone, registered) = (%s, %s, %s, %s, %s) WHERE id = %s"
+    values = [owner.title, owner.first_name, owner.last_name, owner.phone, owner.registered, owner.id]
     run_sql(sql, values)
 
 #DELETE
