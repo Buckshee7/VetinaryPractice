@@ -23,7 +23,7 @@ CREATE TABLE animals (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
     img_url VARCHAR(255),
-    dob VARCHAR(255),
+    dob DATE,
     animal_type VARCHAR(255),
     owner_id INT REFERENCES owners(id),
     vet_id INT REFERENCES vets(id) ON DELETE SET NULL 

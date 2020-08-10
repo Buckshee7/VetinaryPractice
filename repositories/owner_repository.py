@@ -39,10 +39,9 @@ def animals(owner):
     results = run_sql(sql, values)
 
     for row in results:
-        dob = datetime.datetime.strptime(row['dob'], '%Y-%m-%d').date()
         vet = select(row['vet_id']) if row['vet_id'] else None
         owner = select(row['owner_id'])
-        animal = Animal(row['name'], dob, row['animal_type'], owner, vet, row['img_url'], row['id'])
+        animal = Animal(row['name'], row['dob'], row['animal_type'], owner, vet, row['img_url'], row['id'])
         animals.append(animal)
     
     return animals

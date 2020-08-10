@@ -8,7 +8,7 @@ import repositories.owner_repository as owner_repository
 def save(animal):
     vet_id = animal.vet.id if animal.vet else None
     sql = "INSERT INTO animals (name, dob, animal_type, owner_id, vet_id, img_url) VALUES (%s, %s, %s, %s, %s, %s) RETURNING id"
-    values = [animal.name, str(animal.dob), animal.animal_type, animal.owner.id, vet_id, animal.img_url]
+    values = [animal.name, animal.dob, animal.animal_type, animal.owner.id, vet_id, animal.img_url]
     result = run_sql(sql, values)[0]
     animal.id = result['id']
 
@@ -19,10 +19,9 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        dob = datetime.datetime.strptime(row['dob'], '%Y-%m-%d').date()
         vet = vet_repository.select(row['vet_id']) if row['vet_id'] else None
         owner = owner_repository.select(row['owner_id'])
-        animal = Animal(row['name'], dob, row['animal_type'], owner, vet, row['img_url'], row['id'])
+        animal = Animal(row['name'], row['dob'], row['animal_type'], owner, vet, row['img_url'], row['id'])
         animals.append(animal)
     
     return animals
@@ -34,17 +33,16 @@ def select(animal_id):
 
     if result:
         dict_animal = result[0]
-        dob = datetime.datetime.strptime(dict_animal['dob'], '%Y-%m-%d').date()
         vet = vet_repository.select(dict_animal['vet_id']) if dict_animal['vet_id'] else None
         owner = owner_repository.select(dict_animal['owner_id'])
-        animal = Animal(dict_animal['name'], dob, dict_animal['animal_type'], owner, vet, dict_animal['img_url'], dict_animal['id'])
+        animal = Animal(dict_animal['name'], dict_animal['dob'], dict_animal['animal_type'], owner, vet, dict_animal['img_url'], dict_animal['id'])
         return animal
 
 #UPDATE
 def update(animal):
     vet_id = animal.vet.id if animal.vet else None
     sql = "UPDATE animals SET (name, dob, animal_type, owner_id, vet_id, img_url) = (%s, %s, %s, %s, %s, %s) WHERE id = %s"
-    values = [animal.name, str(animal.dob), animal.animal_type, animal.owner.id, vet_id, animal.img_url, animal.id]
+    values = [animal.name, animal.dob, animal.animal_type, animal.owner.id, vet_id, animal.img_url, animal.id]
     run_sql(sql, values)
 
 

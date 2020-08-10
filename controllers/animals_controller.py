@@ -61,7 +61,6 @@ def update_animal(id):
     img_url = request.form['img_url'] if request.form['img_url'] else "static/images/no_img.jpg"
     vet_id = None if request.form['vet_id'] == "None" else request.form['vet_id']
     vet = vet_repository.select(vet_id)
-    treatment_notes = "" #to be implemented later
-    updated_animal = Animal(name, dob, animal_type, owner, vet, img_url, treatment_notes, id)
+    updated_animal = Animal(name, dob, animal_type, owner, vet, img_url, id)
     animal_repository.update(updated_animal)
     return redirect('/animals')

@@ -35,7 +35,6 @@ def select(id):
     treatment = Treatment(animal, vet, result['details'], result['date'], id)
     return treatment
 
-
 #UPDATE
 def update(treatment):
     sql = "UPDATE treatments SET (details, date) = (%s, %s) WHERE id=%s"
