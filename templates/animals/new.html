@@ -35,9 +35,12 @@
         <select name="owner_id" required>
             <option value="" hidden disabled selected>Select Owner</option>
             {% for owner in owners %}
-                <option value="{{ owner.id }}">{{ owner.title }} {{ owner.last_name }}</option>
+                {% if owner.registered == True %}
+                    <option value="{{ owner.id }}">{{ owner.title }} {{ owner.last_name }}</option>
+                {% endif %}
             {% endfor %}
         </select>
+        <p>Note: Owner must be registered with practice prior to adding any animals</p>
     </div>
     <div>
         <h3>Vetinarian</h3>

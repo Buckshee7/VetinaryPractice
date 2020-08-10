@@ -43,7 +43,6 @@ def create_new_animal():
     animal_repository.save(new_animal)
     return redirect('/animals')
     
-
 @animals_blueprint.route('/animals/<id>/edit')
 def get_info_for_update(id):
     animal = animal_repository.select(id)
