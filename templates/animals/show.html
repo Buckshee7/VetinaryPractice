@@ -25,11 +25,22 @@
         {% else %}
             <p>-- NO VET ASSIGNED--</p>
         {% endif %}
+    </div>
+    <div>
         <h3>Treatment Notes</h3>
+        {% if animal.vet %}
+            <a href="/treatments/new/{{ animal.id }}">Add New Treatment</a>
+        {% else %}
+            <p>Note: To add new treatments a vet must first be assigned</p>
+        {% endif %}
         <h4>Upcoming</h4>
             {% if treatments_future %}
                 {% for treatment in treatments_future %}
-                    <p>{{ treatment.date }} : {{ treatment.details }} <a href="/treatments/{{ treatment.id }}">Details</a> <a href="/treatments/{{ treatment.id }}/delete/animal">Delete</a></p>
+                    <div>    
+                        <p>{{ treatment.date }} : {{ treatment.details }}</p>
+                        <a href="/treatments/{{ treatment.id }}/edit/animal">Update</a>
+                        <a href="/treatments/{{ treatment.id }}/delete/animal">Delete</a>
+                    </div>
                 {% endfor %}
             {% else %}
                 <p>-- NO TREATMENTS ARRANGED --</p>
@@ -37,7 +48,11 @@
         <h4>Historic</h4>
             {% if treatments_past %}
                 {% for treatment in treatments_past %}
-                    <p>{{ treatment.date }} : {{ treatment.details }} <a href="/treatments/{{ treatment.id }}">Details</a> <a href="/treatments/{{ treatment.id }}/delete/animal">Delete</a></p>
+                    <div>
+                        <p>{{ treatment.date }} : {{ treatment.details }}</p>
+                        <a href="/treatments/{{ treatment.id }}/edit/animal">Update</a>
+                        <a href="/treatments/{{ treatment.id }}/delete/animal">Delete</a>
+                    </div>
                 {% endfor %}
             {% else %}
                 <p>-- NO HISTORIC TREATMENTS --</p>
