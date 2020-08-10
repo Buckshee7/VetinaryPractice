@@ -5,9 +5,19 @@ from models.treatment import Treatment
 
 treatments_blueprint = Blueprint("treatments", __name__)
 
-@treatments_blueprint.route('/treatments/<id>')
-def show(id):
-    pass
+@treatments_blueprint.route('/treatments')
+def index():
+    treatments = treatment_repository.select_all()
+    date_today = datetime.datetime.now()
+    treatments_future = [treatment for treatment in treatments if treatment.date >= date_today.date()]
+    treatments_past = [treatment for treatment in treatments if treatment.date < date_today.date()]
+    return render_template('/treatments/index.html', treatments_future=treatments_future, treatments_past=treatments_past, title='All Treatments')
+
+#do i need this route? I dont really want to have a show page...
+# @treatments_blueprint.route('/treatments/<id>')
+# def show(id):
+#     treatment = treatment_repository.select(id)
+#     return render_template('treatments.show.html', treatment=treatment, title='Treatment Details')
 
 @treatments_blueprint.route('/treatments/<id>/delete')
 def delete(id):

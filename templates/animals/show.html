@@ -32,7 +32,7 @@
                     <p>{{ treatment.date }} : {{ treatment.details }} <a href="/treatments/{{ treatment.id }}">Details</a></p>
                 {% endfor %}
             {% else %}
-                <p>-- NO FUTURE TREATMENTS ARRANGED --</p>
+                <p>-- NO TREATMENTS ARRANGED --</p>
             {% endif %}
         <h4>Historic</h4>
             {% if treatments_past %}
@@ -40,7 +40,7 @@
                     <p>{{ treatment.date }} : {{ treatment.details }} <a href="/treatments/{{ treatment.id }}">Details</a></p>
                 {% endfor %}
             {% else %}
-                <p>-- NO FUTURE TREATMENTS ARRANGED --</p>
+                <p>-- NO HISTORIC TREATMENTS --</p>
             {% endif %}
     </div>
 {% endblock %}
