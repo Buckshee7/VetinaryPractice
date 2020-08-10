@@ -29,7 +29,7 @@
         <h4>Upcoming</h4>
             {% if treatments_future %}
                 {% for treatment in treatments_future %}
-                    <p>{{ treatment.date }} : {{ treatment.details }} <a href="/treatments/{{ treatment.id }}">Details</a></p>
+                    <p>{{ treatment.date }} : {{ treatment.details }} <a href="/treatments/{{ treatment.id }}">Details</a> <a href="/treatments/{{ treatment.id }}/delete/animal">Delete</a></p>
                 {% endfor %}
             {% else %}
                 <p>-- NO TREATMENTS ARRANGED --</p>
@@ -37,7 +37,7 @@
         <h4>Historic</h4>
             {% if treatments_past %}
                 {% for treatment in treatments_past %}
-                    <p>{{ treatment.date }} : {{ treatment.details }} <a href="/treatments/{{ treatment.id }}">Details</a></p>
+                    <p>{{ treatment.date }} : {{ treatment.details }} <a href="/treatments/{{ treatment.id }}">Details</a> <a href="/treatments/{{ treatment.id }}/delete/animal">Delete</a></p>
                 {% endfor %}
             {% else %}
                 <p>-- NO HISTORIC TREATMENTS --</p>
