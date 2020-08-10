@@ -6,11 +6,13 @@ app = Flask(__name__)
 from controllers.vets_controller import vets_blueprint
 from controllers.animals_controller import animals_blueprint
 from controllers.owners_controller import owners_blueprint
+from controllers.treatments_controller import treatments_blueprint
 
 #register blueprints
 app.register_blueprint(vets_blueprint)
 app.register_blueprint(animals_blueprint)
 app.register_blueprint(owners_blueprint)
+app.register_blueprint(treatments_blueprint)
 
 @app.route('/')
 def home():

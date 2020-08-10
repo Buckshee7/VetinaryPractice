@@ -31,7 +31,7 @@ CREATE TABLE animals (
 
 CREATE TABLE treatments (
     id SERIAL PRIMARY KEY,
-    animal_id INT REFERENCES animals(id),
+    animal_id INT REFERENCES animals(id) ON DELETE CASCADE,
     vet_id INT REFERENCES vets(id) ON DELETE NO ACTION,
     details VARCHAR(255),
     date DATE
