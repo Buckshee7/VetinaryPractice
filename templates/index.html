@@ -6,7 +6,7 @@
     <h3>Total Clients: {{ counts['owners'] }}</h3>
     <h3>Total Animals: {{ counts['animals'] }}</h3>
     <h2>What's Happening Today</h2>
-    {% if treatment %}
+    {% if treatments_today %}
         {% for treatment in treatments_today %}
             <h3>Dr {{ treatment.vet.last_name }} with {{ treatment.animal.name }}({{ treatment.animal.animal_type }})</h3>
             <p>Details: {{ treatment.details }}</p>
