@@ -47,10 +47,11 @@ all_vets = vet_repository.select_all()
 returned_vet = vet_repository.select(vet_2.id)
 no_vet_returned = vet_repository.select(vet_1.id)
 
-treatment_1 = Treatment(animal_1, vet_1, "Vaccination: COVID")
+treatment_1 = Treatment(animal_1, vet_1, "Vaccination: COVID", datetime.date(2020,7,2))
 treatment_repository.save(treatment_1)
+returned_treatment = treatment_repository.select(treatment_1.id)
 
-all_treatments = treatment_repository.select_all()
+# all_treatments = treatment_repository.select_all()
 
 vet_1.first_name = "Will"
 vet_repository.update(vet_1)
