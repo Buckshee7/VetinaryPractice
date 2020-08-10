@@ -1,8 +1,10 @@
 import datetime
 from db.run_sql import run_sql
 from models.animal import Animal
+from models.treatment import Treatment
 import repositories.vet_repository as vet_repository
 import repositories.owner_repository as owner_repository
+import repositories.animal_repository as animal_repository
 
 #CREATE
 def save(animal):
@@ -37,6 +39,20 @@ def select(animal_id):
         owner = owner_repository.select(dict_animal['owner_id'])
         animal = Animal(dict_animal['name'], dict_animal['dob'], dict_animal['animal_type'], owner, vet, dict_animal['img_url'], dict_animal['id'])
         return animal
+
+def treatments(id):
+    treatments = []
+    sql = "SELECT * FROM treatments WHERE animal_id=%s"
+    values = [id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        vet = vet_repository.select(row['vet_id'])
+        animal = animal_repository.select(row['animal_id'])
+        treatment = Treatment(animal, vet, row['details'], row['date'], row['id'])
+        treatments.append(treatment)
+
+    return treatments
 
 #UPDATE
 def update(animal):

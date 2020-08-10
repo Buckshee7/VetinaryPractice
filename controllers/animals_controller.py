@@ -15,7 +15,11 @@ def index():
 @animals_blueprint.route('/animals/<id>')
 def show(id):
     animal = animal_repository.select(id)
-    return render_template('/animals/show.html', animal=animal, title=animal.name)
+    treatments = animal_repository.treatments(id)
+    date_today = datetime.datetime.now()
+    treatments_future = [treatment for treatment in treatments if treatment.date >= date_today.date()]
+    treatments_past = [treatment for treatment in treatments if treatment.date < date_today.date()]
+    return render_template('/animals/show.html', animal=animal, treatments_future=treatments_future, treatments_past=treatments_past, title=animal.name)
 
 @animals_blueprint.route('/animals/<id>/delete')
 def delete(id):

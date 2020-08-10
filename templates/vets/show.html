@@ -21,4 +21,23 @@
             <p>-- NO ASSIGNED ANIMALS --</p>
         {% endif %}
     </div>
+    <div>
+        <h3>Procedures</h3>
+        <h4>Upcoming</h4>
+            {% if treatments_future %}
+                {% for treatment in treatments_future %}
+                    <p>{{ treatment.date }} : {{ treatment.details }} <a href="/treatments/{{ treatment.id }}">Details</a></p>
+                {% endfor %}
+            {% else %}
+                <p>-- NO FUTURE TREATMENTS ARRANGED --</p>
+            {% endif %}
+        <h4>Historic</h4>
+            {% if treatments_past %}
+                {% for treatment in treatments_past %}
+                    <p>{{ treatment.date }} : {{ treatment.details }} <a href="/treatments/{{ treatment.id }}">Details</a></p>
+                {% endfor %}
+            {% else %}
+                <p>-- NO FUTURE TREATMENTS ARRANGED --</p>
+            {% endif %}
+    </div>
 {% endblock %}

@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, redirect, request
 import repositories.vet_repository as vet_repository
+import datetime
 from models.vet import Vet
 
 vets_blueprint = Blueprint("vets", __name__)
@@ -13,7 +14,11 @@ def index():
 def show(id):
     vet = vet_repository.select(id)
     animals = vet_repository.animals(id)
-    return render_template('/vets/show.html', vet=vet, animals=animals, title=f"Dr {vet.last_name}")
+    treatments = vet_repository.treatments(id)
+    date_today = datetime.datetime.now()
+    treatments_future = [treatment for treatment in treatments if treatment.date >= date_today.date()]
+    treatments_past = [treatment for treatment in treatments if treatment.date < date_today.date()]
+    return render_template('/vets/show.html', vet=vet, animals=animals, treatments_future=treatments_future, treatments_past=treatments_past, title=f"Dr {vet.last_name}")
 
 @vets_blueprint.route('/vets/<id>/delete')
 def delete(id):
