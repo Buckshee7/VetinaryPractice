@@ -3,10 +3,13 @@ import datetime
 from models.vet import Vet
 from models.animal import Animal
 from models.owner import Owner
+from models.treatment import Treatment
 import repositories.vet_repository as vet_repository
 import repositories.animal_repository as animal_repository
 import repositories.owner_repository as owner_repository
+import repositories.treatment_repository as treatment_repository
 
+treatment_repository.delete_all()
 animal_repository.delete_all()
 owner_repository.delete_all()
 vet_repository.delete_all()
@@ -43,6 +46,11 @@ all_vets = vet_repository.select_all()
 
 returned_vet = vet_repository.select(vet_2.id)
 no_vet_returned = vet_repository.select(vet_1.id)
+
+treatment_1 = Treatment(animal_1, vet_1, "Vaccination: COVID")
+treatment_repository.save(treatment_1)
+
+all_treatments = treatment_repository.select_all()
 
 vet_1.first_name = "Will"
 vet_repository.update(vet_1)

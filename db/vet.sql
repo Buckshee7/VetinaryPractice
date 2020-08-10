@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS treatments;
 DROP TABLE IF EXISTS animals;
 DROP TABLE IF EXISTS owners;
 DROP TABLE IF EXISTS vets;
@@ -26,4 +27,11 @@ CREATE TABLE animals (
     animal_type VARCHAR(255),
     owner_id INT REFERENCES owners(id),
     vet_id INT REFERENCES vets(id) ON DELETE SET NULL 
+);
+
+CREATE TABLE treatments (
+    id SERIAL PRIMARY KEY,
+    animal_id INT REFERENCES animals(id),
+    vet_id INT REFERENCES vets(id) ON DELETE NO ACTION,
+    details VARCHAR(255)
 );
