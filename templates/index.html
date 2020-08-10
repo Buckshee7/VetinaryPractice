@@ -1,5 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    
+    <h2>Summary</h2>
+    <h3>Total Vets: {{ counts['vets'] }}</h3>
+    <h3>Total Clients: {{ counts['owners'] }}</h3>
+    <h3>Total Animals: {{ counts['animals'] }}</h3>
+    <h2>What's Happening Today</h2>
+    {% if treatment %}
+        {% for treatment in treatments_today %}
+            <h3>Dr {{ treatment.vet.last_name }} with {{ treatment.animal.name }}({{ treatment.animal.animal_type }})</h3>
+            <p>Details: {{ treatment.details }}</p>
+        {% endfor %}
+    {% else %}
+        <h3> No treatments planned for today, put your feet up! </h3>
+    {% endif %}
 {% endblock %}
