@@ -1,13 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <section class="members_view">
-        <h2>All Animals</h2>
+    <section class="members_view page_padding">
+        <h2 class="padding">All Animals</h2>
         <div class="primary_info">
             <div class="members new">
-                <img class="primary_image" src="static//images/no_img.jpg" alt="Add New Vet">
+                <a href="/animals/new"><img class="primary_image" src="static//images/no_img.jpg" alt="Add New Vet"></a>
                 <h3>--New Animal--</h3>
-                <a class="add_new button" href="/animals/new">Add New</a>
             </div>
             {% for animal in animals %}
                 <div class = "members">

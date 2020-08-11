@@ -5,7 +5,7 @@
         <div id="vet">
             <img class="primary_image" src="../{{ vet.img_url }}" alt="Profile picture of Dr {{ vet.last_name }}">
             <h2>Dr {{ vet.first_name }} {{vet.last_name }}</h2>
-            <a href="/vets/{{ vet.id }}/edit">Edit</a>
+            <a class="button edit"href="/vets/{{ vet.id }}/edit">Edit</a>
         </div>
         <div id="animals">
             <h3>Assigned Animals</h3>

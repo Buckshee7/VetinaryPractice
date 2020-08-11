@@ -179,22 +179,18 @@ header > nav > ul > li:hover {
 
 #primary {
     grid-area: primary;
-    padding: 20px;
 }
 
 #secondary {
     grid-area: secondary;
-    padding: 20px;
 }
 
 #tertiary {
     grid-area: tertiary;
-    padding: 20px;
 }
 
 #treatment {
     grid-area: treatment;
-    padding: 20px;
 }
 
 .inline {
@@ -222,7 +218,7 @@ h3 {
 }
 
 #vet > img {
-    padding-left: 60px;
+    margin-left: 25px;
 }
 
 #vet {
@@ -238,6 +234,6 @@ h3 {
     padding-left: 40px;
 }
 
-#show_owner {
-    margin: 40px;
+.padding {
+    padding: 16px 40px;
 }
