@@ -1,12 +1,71 @@
-.primary_info > img {
-    width: 250px;
-    height: 250px;
+body {
+    margin: 0px;
+}
+
+header > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+header > div > img {
+    height: 8em;
+    width: auto;
+}
+
+header > div > h1 {
+    font-size: 3em;
+    
+    padding: 40px;
+    background-image: linear-gradient(to right, #989fc2 , white);
+    margin: 0px;
+    width: 100%
+}
+
+header > nav {
+    background-color: #a4c6da;
+    width: 100%;
+    margin: 0px;
+    padding: 0;
+}
+
+header > nav > ul {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0 20%;;
+}
+
+header > nav > ul > li {
+    list-style-type: none;
+    padding: 8px 16px;
+    margin:0;
+    font-size: 1.5em;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+header > nav > ul > li:hover {
+    background-color: #f8f2c0;
+}
+
+.primary_image {
+    width: 175px;
+    height: 175px;
     border-radius: 100%;
 }
 
 .secondary_info > a > img {
-    width: 150px;
-    height: 150px;
+    width: 125px;
+    height: 1250px;
     border-radius: 100%;
 }
 
@@ -14,4 +73,87 @@
     width: 150px;
     height: 150px;
     border-radius: 100%;
+}
+
+#home {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "summary today today ";
+    height: 100%
+}
+
+#home > div {
+    padding: 16px 40px;
+    height: 100%;
+}
+
+h2 {
+    font-size: 2em;
+    padding: 0 20px;
+}
+
+#summary {
+    background-color: #f8f4e3;
+    text-align: center;
+}
+
+.appointments_today {
+    border: 1px dashed #a4c6da;
+    border-radius: 25px;
+    padding: 10px 32px;
+    margin: 12px;
+
+}
+
+.appointments_today > h3 {
+    padding: 0;
+    margin: 6px;
+}
+
+.appointments_today > p {
+    padding: 0;
+    margin: 6px;
+}
+
+.primary_info {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 0 40px;
+    justify-content: flex-start;
+}
+
+.members_view > div > div {
+    margin: 16px 30px;
+}
+
+.button {
+    display: block;
+    width: 115px;
+    background-color: #a4c6da;
+    text-align: center;
+    border-radius: 5px;
+    line-height: 25px;
+    margin: 0;
+}
+
+.delete:hover {
+    background-color: #ca3a16;
+}
+
+.add_new:hover {
+    background-color: #9ee96c;
+}
+
+.members {
+    text-align: center;
+}
+
+.members > h3 {
+    margin: 10px;
+}
+
+.new {
+    background-color: #e6f7da;
 }

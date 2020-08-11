@@ -1,18 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <section>
+    <section class="members_view">
         <h2>All Animals</h2>
-            <div>
-                <a href="/animals/new">Add New Animal</a>
+        <div class="primary_info">
+            <div class="members new">
+                <img class="primary_image" src="static//images/no_img.jpg" alt="Add New Vet">
+                <h3>--New Animal--</h3>
+                <a class="add_new button" href="/animals/new">Add New</a>
             </div>
             {% for animal in animals %}
-                <div class = "primary_info">
-                    <img src="{{ animal.img_url }}" alt="Profile picture of {{ animal.name }}">
+                <div class = "members">
+                    <a href="/animals/{{ animal.id }}"><img class="primary_image" src="{{ animal.img_url }}" alt="Profile picture of {{ animal.name }}"></a>
                     <h3>{{ animal.name }}</h3>
-                    <a href="/animals/{{ animal.id }}">Details</a>
-                    <a href="/animals/{{ animal.id }}/delete">Remove</a>
+                    <a class="delete button" href="/animals/{{ animal.id }}/delete">Remove</a>
                 </div>
             {% endfor %}
+        </div>
     </section>
 {% endblock %}
