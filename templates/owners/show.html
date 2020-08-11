@@ -1,25 +1,29 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="primary_info">
+<section id="show_owner">
+    <div>
         <h2>{{ owner.title }} {{ owner.first_name }} {{owner.last_name }}</h2>
         <p>Phone Number: {{ owner.phone }}</p>
         <p>Registered: {{ owner.registered }}</p>
-        <a href="/owners/{{ owner.id }}/edit">Edit</a>
+        <a class="button edit" href="/owners/{{ owner.id }}/edit">Edit</a>
     </div>
     <div>
         <h3>Animals</h3>
         {% if animals %}
+        <div class="primary_info">
             {% for animal in animals %}
-            <div class="secondary_info">
+            <div class="members">
                 <a href="/animals/{{ animal.id }}">
-                    <img src="../{{ animal.img_url }}" alt="Profile picture of {{ animal.name }}">
+                    <img class="secondary_image" src="../{{ animal.img_url }}" alt="Profile picture of {{ animal.name }}">
                 </a>
                 <p>{{ animal.name }}</p>
             </div>
             {% endfor %}
+        </div>
         {% else %}
             <p>-- NO ANIMALS REGISTERED --</p>
         {% endif %}
     </div>
+</section>
 {% endblock %}

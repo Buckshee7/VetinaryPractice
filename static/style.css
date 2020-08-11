@@ -26,6 +26,8 @@ header > nav {
     width: 100%;
     margin: 0px;
     padding: 0;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
 header > nav > ul {
@@ -63,9 +65,9 @@ header > nav > ul > li:hover {
     border-radius: 100%;
 }
 
-.secondary_info > a > img {
+.secondary_image {
     width: 125px;
-    height: 1250px;
+    height: 125px;
     border-radius: 100%;
 }
 
@@ -89,10 +91,10 @@ header > nav > ul > li:hover {
     height: 100%;
 }
 
-h2 {
-    font-size: 2em;
+#primary > h2 {
+    font-size: 2.4em;
     padding: 0 20px;
-}
+} 
 
 #summary {
     background-color: #f8f4e3;
@@ -135,7 +137,7 @@ h2 {
     text-align: center;
     border-radius: 5px;
     line-height: 25px;
-    margin: 0;
+    margin: 5px;
 }
 
 .delete:hover {
@@ -148,6 +150,7 @@ h2 {
 
 .members {
     text-align: center;
+    margin: 16px;
 }
 
 .members > h3 {
@@ -156,4 +159,85 @@ h2 {
 
 .new {
     background-color: #e6f7da;
+}
+
+.edit:hover {
+    background-color: #f8f2c0;
+}
+
+.show {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "primary secondary tertiary"
+    "treatment treatment treatment";
+    height: 100%;
+    padding: 40px;
+    row-gap: 20px;
+}
+
+#primary {
+    grid-area: primary;
+    padding: 20px;
+}
+
+#secondary {
+    grid-area: secondary;
+    padding: 20px;
+}
+
+#tertiary {
+    grid-area: tertiary;
+    padding: 20px;
+}
+
+#treatment {
+    grid-area: treatment;
+    padding: 20px;
+}
+
+.inline {
+    display: inline-block;
+}
+
+h3 {
+    font-size: 1.5em;
+}
+
+.show_vet{
+    display: grid;
+    grid-template-columns: 24% 24% 24% 24%;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "vet animals animals animals"
+    "treatment treatment treatment treatment";
+    height: 100%;
+    padding: 40px;
+    row-gap: 20px;
+}
+
+#vet > h2 {
+    font-size: 2em;
+}
+
+#vet > img {
+    padding-left: 60px;
+}
+
+#vet {
+    grid-area: vet;
+}
+
+#animals {
+    grid-area: animals;
+    padding-left: 50px;
+}
+
+#animals > h3 {
+    padding-left: 40px;
+}
+
+#show_owner {
+    margin: 40px;
 }

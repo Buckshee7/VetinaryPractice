@@ -1,17 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <section>
+    <section class="members_view">
         <h2>All Owners</h2>
-            <div>
-                <a href="/owners/new">Add New Owner</a>
-            </div>
+            <div class="primary_info">
+                <div class="member new">
+                    <h3>--New Owner--</h3>
+                    <a class="button add_new" href="/owners/new">Add New</a>
+                </div>
             {% for owner in owners %}
-                <div class = "primary_info">
+                <div class = "member">
                     <h3>{{ owner.title }} {{owner.last_name}}</h3>
-                    <a href="/owners/{{ owner.id }}">Details</a>
-                    <a href="/owners/{{ owner.id }}/delete">Remove</a>
+                    <a class="button edit" href="/owners/{{ owner.id }}">Details</a>
+                    <a class="button delete" href="/owners/{{ owner.id }}/delete">Remove</a>
                 </div>
             {% endfor %}
+            </div>
     </section>
 {% endblock %}
