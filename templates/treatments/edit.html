@@ -4,7 +4,7 @@
     <h2>Update Treatment</h2>
     <h3>Animal: {{animal.name}}</h3>
     <h3>Vetinarian: Dr {{ vet.last_name }}</h3>
-    <form action="/treatments/{{ treatment.id }}" method="post">
+    <form action="/treatments/{{ treatment.id }}" method="post"></form>
         <input type="text" name="source" value="{{ source }}" hidden>
         <input type="text" name="animal_id" value="{{ animal.id }}" hidden>
         <input type="text" name="vet_id" value="{{ vet.id }}" hidden>

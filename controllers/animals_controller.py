@@ -67,4 +67,4 @@ def update_animal(id):
     vet = vet_repository.select(vet_id)
     updated_animal = Animal(name, dob, animal_type, owner, vet, img_url, id)
     animal_repository.update(updated_animal)
-    return redirect('/animals')
+    return redirect(f'/animals/{updated_animal.id}')

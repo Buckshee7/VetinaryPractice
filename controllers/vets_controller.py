@@ -50,4 +50,4 @@ def update_vet(id):
     img_url = request.form['img_url'] if request.form['img_url'] else "static/images/no_img.jpg"
     updated_vet = Vet(first_name, last_name, img_url, id)
     vet_repository.update(updated_vet)
-    return redirect('/vets')
+    return redirect(f'/vets/{updated_vet.id}')
