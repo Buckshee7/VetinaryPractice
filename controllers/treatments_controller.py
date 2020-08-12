@@ -7,9 +7,17 @@ from models.treatment import Treatment
 
 treatments_blueprint = Blueprint("treatments", __name__)
 
+#restful delete route (returns to animal page as default)
+@treatments_blueprint.route('/treatments/<id>/delete')
+def delete_no_source(id):
+    treatment = treatment_repository.select(id)
+    source_id = animal_repository.select(treatment.animal.id).id
+    treatment_repository.delete(id)
+    return redirect(f'/animals/{source_id}')
+
 #route for delete FROM <source> page
 @treatments_blueprint.route('/treatments/<id>/delete/<source>')
-def delete_from_vet(id, source):
+def delete_from_source(id, source):
     treatment = treatment_repository.select(id)
     if source == "vet":
         source_id = vet_repository.select(treatment.vet.id).id
