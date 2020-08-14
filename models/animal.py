@@ -10,7 +10,7 @@ class Animal():
         self.img_url = img_url
         self.id = id
 
-    #this method could be improved as doesnt incorporate leap years
+    
     def calculate_age(self):
         age_days = date.today() - self.dob
         age_years = age_days.days // 365
