@@ -1,4 +1,4 @@
-# VetirinaryPractice
+# VeterinaryPractice
 Full stack administration site for vetinary practice
 
 ## Purpose/Brief
